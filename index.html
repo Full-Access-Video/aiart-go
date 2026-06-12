@@ -3,108 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALL Video Studio</title>
+<title>Full Video Gallery - Exclusive Collection</title>
+<meta name="description" content="Premium All-generated full video collection. Exclusive content updated daily.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;background:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;overflow-x:hidden}
+body{min-height:100vh;background:#0a0a0a;font-family:'Segoe UI',sans-serif;color:#fff;overflow-x:hidden}
+.hero{position:relative;width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
 
 /* Scrolling Background */
-.bg-scroll{position:fixed;top:0;left:0;width:200%;height:100%;display:flex;z-index:0;opacity:0.25;filter:blur(4px) brightness(0.4) saturate(1.3);animation:scrollBg 25s linear infinite}
-.bg-scroll img{width:16.66%;height:100vh;object-fit:cover}
-@keyframes scrollBg{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.bg-scroll{position:fixed;top:0;left:0;width:200%;height:100%;display:flex;z-index:0;opacity:0.3;filter:blur(4px) brightness(0.4) saturate(1.3);animation:scrollLeft 30s linear infinite}
+.bg-scroll img{width:20%;height:100vh;object-fit:cover}
+@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.95) 100%);z-index:1}
-
-.content{position:relative;z-index:2;text-align:center;max-width:480px;width:100%;padding:20px}
-
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.75) 45%,rgba(0,0,0,0.97) 100%);z-index:1}
+.content{position:relative;z-index:2;text-align:center;max-width:480px;width:100%}
 .badge{display:inline-block;padding:6px 16px;background:rgba(255,50,100,0.15);border:1px solid rgba(255,50,100,0.4);border-radius:20px;font-size:0.72rem;color:#ff6b9d;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-
 h1{font-size:2rem;margin-bottom:8px;background:linear-gradient(135deg,#ff6b9d,#ff9d6b,#c44dff,#6b9dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;font-weight:800}
-
 .sub{color:#888;font-size:0.88rem;margin-bottom:24px;line-height:1.5}
-
 .preview{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:24px;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
-.preview img{width:100%;height:180px;object-fit:cover;transition:all 0.4s;filter:brightness(0.7) saturate(1.2)}
-.preview img:hover{transform:scale(1.08);filter:brightness(1) saturate(1.3)}
-
+.preview img{width:100%;height:200px;object-fit:cover;transition:all 0.4s;filter:brightness(0.7) saturate(1.2)}
+.preview img:hover{transform:scale(1.08);filter:brightness(1) saturate(1.3);z-index:2}
 .stats{display:flex;justify-content:center;gap:28px;margin-bottom:28px}
 .stat{text-align:center}
 .stat-num{font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,#ff6b9d,#c44dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .stat-label{font-size:0.65rem;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
-
-.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:22px}
-.tag{padding:4px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;font-size:0.65rem;color:#666}
-
+.btn{display:inline-block;padding:16px 48px;background:linear-gradient(135deg,#ff3264,#c44dff);color:#fff;text-decoration:none;border-radius:50px;font-size:1.05rem;font-weight:700;transition:all .3s;box-shadow:0 4px 25px rgba(255,50,100,0.35);text-transform:uppercase;letter-spacing:1.5px;position:relative;overflow:hidden;animation:glow 2s ease-in-out infinite alternate}
+@keyframes glow{from{box-shadow:0 4px 25px rgba(255,50,100,0.35)}to{box-shadow:0 4px 40px rgba(196,77,255,0.5)}}
+.btn::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(transparent,rgba(255,255,255,0.08),transparent);transform:rotate(45deg);animation:shine 3s infinite}
+@keyframes shine{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 40px rgba(255,50,100,0.5)}
 .lock{display:inline-block;margin-bottom:10px;font-size:1.6rem;animation:bounce 2s infinite}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-
-.btn{display:inline-block;padding:16px 48px;background:linear-gradient(135deg,#ff3264,#c44dff);color:#fff;text-decoration:none;border-radius:50px;font-size:1.05rem;font-weight:700;transition:all .3s;box-shadow:0 4px 25px rgba(255,50,100,0.35);text-transform:uppercase;letter-spacing:1.5px;animation:glow 2s ease-in-out infinite alternate}
-@keyframes glow{from{box-shadow:0 4px 25px rgba(255,50,100,0.35)}to{box-shadow:0 4px 40px rgba(196,77,255,0.5)}}
-.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 40px rgba(255,50,100,0.5)}
-
-.countdown{margin-top:12px;padding:8px 16px;background:rgba(255,50,100,0.08);border:1px solid rgba(255,50,100,0.2);border-radius:8px;font-size:0.75rem;color:#ff6b9d;display:inline-block}
-
 .footer{margin-top:18px;font-size:0.65rem;color:#333}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:22px}
+.tag{padding:4px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;font-size:0.65rem;color:#666}
+.countdown{margin-top:12px;padding:8px 16px;background:rgba(255,50,100,0.08);border:1px solid rgba(255,50,100,0.2);border-radius:8px;font-size:0.75rem;color:#ff6b9d;display:inline-block}
 </style>
 </head>
 <body>
 
-<!-- Scrolling Background Images -->
+<!-- Scrolling Background Images (duplicated for seamless loop) -->
 <div class="bg-scroll">
-  <img src="https://picsum.photos/seed/bg1/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg2/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg3/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg4/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg5/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg6/400/600" alt="">
-  <!-- Duplicate for seamless loop -->
-  <img src="https://picsum.photos/seed/bg1/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg2/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg3/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg4/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg5/400/600" alt="">
-  <img src="https://picsum.photos/seed/bg6/400/600" alt="">
+<img src="https://i.ibb.co.com/xtzzNwc6/22-45-15.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a1/400/600'">
+<img src="https://i.ibb.co.com/gZSVYKvX/Whats-App-Image-2026-06-02-at-20-01-28.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a2/400/600'">
+<img src="https://i.ibb.co.com/PsRmyMnr/Whats-App-Image-2026-06-02-at-20-48-40.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a3/400/600'">
+<img src="https://i.ibb.co.com/Zz0CJrnn/Whats-App-Image-2026-06-12-at-09-35-26.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a4/400/600'">
+<img src="https://i.ibb.co.com/LzhKDwgW/1.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a5/400/600'">
+<!-- Duplicate set for seamless -->
+<img src="https://i.ibb.co.com/xtzzNwc6/22-45-15.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a1/400/600'">
+<img src="https://i.ibb.co.com/gZSVYKvX/Whats-App-Image-2026-06-02-at-20-01-28.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a2/400/600'">
+<img src="https://i.ibb.co.com/PsRmyMnr/Whats-App-Image-2026-06-02-at-20-48-40.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a3/400/600'">
+<img src="https://i.ibb.co.com/Zz0CJrnn/Whats-App-Image-2026-06-12-at-09-35-26.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a4/400/600'">
+<img src="https://i.ibb.co.com/LzhKDwgW/1.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a5/400/600'">
 </div>
 <div class="overlay"></div>
 
-<!-- Main Content -->
+<div class="hero">
 <div class="content">
-  <div class="badge">New Collection Added Daily</div>
-  <h1>ALL Video Studio</h1>
-  <p class="sub">There are many more selected videos. Curated daily with fresh content you won't find anywhere else.</p>
+<div class="badge">New Collection Added Daily</div>
+<h1>Full Video Exclusive Gallery</h1>
+<p class="sub">There are many more selected videos. Curated daily with fresh content you won't find anywhere else.</p>
 
-  <div class="preview">
-    <img src="https://picsum.photos/seed/p1/200/300" alt="Preview">
-    <img src="https://picsum.photos/seed/p2/200/300" alt="Preview">
-    <img src="https://picsum.photos/seed/p3/200/300" alt="Preview">
-  </div>
+<div class="preview">
+<img src="https://cdn.nekos.life/neko/neko_350.jpg" alt="AI Art Preview" onerror="this.src='https://picsum.photos/seed/p1/200/300'">
+<img src="https://cdn.nekos.life/waifu/waifu_101.jpg" alt="AI Art Preview" onerror="this.src='https://picsum.photos/seed/p2/200/300'">
+<img src="https://cdn.nekos.life/neko/neko230.jpg" alt="AI Art Preview" onerror="this.src='https://picsum.photos/seed/p3/200/300'">
+</div>
 
-  <div class="stats">
-    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Videos</div></div>
-    <div class="stat"><div class="stat-num">50K</div><div class="stat-label">Views</div></div>
-    <div class="stat"><div class="stat-num">Daily</div><div class="stat-label">Updates</div></div>
-  </div>
+<div class="stats">
+<div class="stat"><div class="stat-num">500+</div><div class="stat-label">Artworks</div></div>
+<div class="stat"><div class="stat-num">50K</div><div class="stat-label">Views</div></div>
+<div class="stat"><div class="stat-num">Daily</div><div class="stat-label">Updates</div></div>
+</div>
 
-  <div class="tags">
-    <span class="tag">Exclusive</span>
-    <span class="tag">Premium</span>
-    <span class="tag">HD Quality</span>
-    <span class="tag">Daily Upload</span>
-    <span class="tag">Full Access</span>
-  </div>
+<div class="tags">
+<span class="tag">full duration</span>
+<span class="tag">Fantasy</span>
+<span class="tag">Amatir</span>
+<span class="tag">Illustration</span>
+<span class="tag">Full Generated</span>
+</div>
 
-  <div class="lock">&#x1F512;</div>
-  <br>
-  <a href="https://www.effectivecpmnetwork.com/yxkuhhqn?key=***" class="btn">Enter Gallery</a>
+<div class="lock">&#x1F512;</div>
+<br>
+<a href="https://www.effectivecpmnetwork.com/yxkuhhqn?key=***" class="btn">Access Gallery Now</a>
 
-  <div class="countdown">New set drops in: <span id="timer"></span></div>
+<div class="countdown">New set drops in: <span id="timer"></span></div>
 
-  <div class="footer">Free access | No sign-up required | Instant viewing</div>
+<div class="footer">Free access | No sign-up required | Instant viewing</div>
+</div>
 </div>
 
 <script>
-// Countdown timer
 function updateTimer(){
   var now=new Date();
   var end=new Date();
