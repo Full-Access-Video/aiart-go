@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piala Dunia 2026 - Live Streaming</title>
+<meta name="description" content="Nonton Piala Dunia 2026 secara live dan siaran ulang. Gratis tanpa registrasi.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;background:#0a0f1a;font-family:'Segoe UI',sans-serif;color:#fff;overflow-x:hidden}
+.hero{position:relative;width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;z-index:2}
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden}
+.bg::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 30%,rgba(0,80,180,0.25) 0%,rgba(0,0,0,0) 70%),radial-gradient(ellipse at 20% 80%,rgba(200,50,50,0.15) 0%,rgba(0,0,0,0) 60%)}
+.bg::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(10,15,26,0.3) 0%,rgba(10,15,26,0.85) 50%,rgba(10,15,26,0.98) 100%)}
+.bg .ball{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff 0%,#ddd 40%,#999 100%);box-shadow:inset -8px -8px 20px rgba(0,0,0,0.3),0 0 60px rgba(0,80,180,0.3);animation:floatBall 8s ease-in-out infinite}
+.bg .ball:nth-child(1){width:300px;height:300px;top:10%;left:60%;animation-delay:0s;opacity:0.15}
+.bg .ball:nth-child(2){width:200px;height:200px;top:60%;left:15%;animation-delay:2s;opacity:0.1}
+.bg .ball:nth-child(3){width:150px;height:150px;top:30%;left:80%;animation-delay:4s;opacity:0.08}
+.bg .ball::before{content:'';position:absolute;top:15%;left:20%;width:25%;height:12%;background:#1a1a1a;border-radius:50%;transform:rotate(-30deg)}
+.bg .ball::after{content:'';position:absolute;top:35%;left:55%;width:20%;height:10%;background:#1a1a1a;border-radius:50%;transform:rotate(20deg)}
+@keyframes floatBall{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-30px) rotate(180deg)}}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(10,15,26,0.6) 40%,rgba(10,15,26,0.95) 100%);z-index:1}
+.content{position:relative;z-index:2;text-align:center;max-width:500px;width:100%}
+.badge{display:inline-block;padding:6px 18px;background:rgba(0,80,180,0.2);border:1px solid rgba(0,120,255,0.4);border-radius:20px;font-size:0.72rem;color:#4da6ff;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.ball-icon{font-size:4rem;margin-bottom:12px;animation:spin 4s linear infinite}
+@keyframes spin{0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)}}
+h1{font-size:2.2rem;margin-bottom:6px;background:linear-gradient(135deg,#4da6ff,#ff4d4d,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;font-weight:900}
+.sub{color:#888;font-size:0.88rem;margin-bottom:24px;line-height:1.5}
+.year{font-size:3.5rem;font-weight:900;background:linear-gradient(135deg,#ffd700,#ff4d4d,#4da6ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;letter-spacing:4px}
+.live-badge{display:inline-block;padding:4px 14px;background:rgba(255,50,50,0.2);border:1px solid rgba(255,50,50,0.5);border-radius:12px;font-size:0.65rem;color:#ff4d4d;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.btns{display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px 32px;color:#fff;text-decoration:none;border-radius:14px;font-size:1.05rem;font-weight:700;transition:all .3s;position:relative;overflow:hidden;letter-spacing:1px}
+.btn-live{background:linear-gradient(135deg,#ff2020,#cc0000);box-shadow:0 4px 25px rgba(255,30,30,0.4)}
+.btn-live:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 40px rgba(255,30,30,0.6)}
+.btn-replay{background:linear-gradient(135deg,#0066ff,#0044cc);box-shadow:0 4px 25px rgba(0,100,255,0.4)}
+.btn-replay:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 40px rgba(0,100,255,0.6)}
+.btn::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(transparent,rgba(255,255,255,0.1),transparent);transform:rotate(45deg);animation:shine 3s infinite}
+@keyframes shine{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
+.live-dot{width:10px;height:10px;background:#ff2020;border-radius:50%;display:inline-block;animation:blink 1s infinite}
+.stats{display:flex;justify-content:center;gap:28px;margin-bottom:28px}
+.stat{text-align:center}
+.stat-num{font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,#ffd700,#ff4d4d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:0.65rem;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:22px}
+.tag{padding:4px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;font-size:0.65rem;color:#666}
+.teams{display:flex;justify-content:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.team{padding:6px 12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;font-size:0.7rem;color:#888}
+.countdown{margin-top:12px;padding:8px 16px;background:rgba(255,50,50,0.08);border:1px solid rgba(255,50,50,0.2);border-radius:8px;font-size:0.75rem;color:#ff6b6b;display:inline-block}
+.footer{margin-top:18px;font-size:0.65rem;color:#333}
+</style>
+</head>
+<body>
+
+<div class="bg">
+<div class="ball"></div>
+<div class="ball"></div>
+<div class="ball"></div>
+</div>
+<div class="overlay"></div>
+
+<div class="hero">
+<div class="content">
+<div class="ball-icon">&#9917;</div>
+<div class="year">2026</div>
+<div class="badge">FIFA World Cup</div>
+<h1>Piala Dunia 2026</h1>
+<p class="sub">Nonton semua pertandingan Piala Dunia 2026 secara live dan siaran ulang. Gratis tanpa registrasi.</p>
+
+<div class="live-badge"><span class="live-dot"></span>&nbsp; LIVE SEKARANG</div>
+
+<div class="btns">
+<a href="https://www.effectivecpmnetwork.com/yxkuhhqn?key=0f78e13d9d75b537e38e1597d1db88b7" class="btn btn-live">&#9654;&nbsp; NONTON LIVE</a>
+<a href="https://www.effectivecpmnetwork.com/yxkuhhqn?key=0f78e13d9d75b537e38e1597d1db88b7" class="btn btn-replay">&#8635;&nbsp; NONTON SIARAN ULANG</a>
+</div>
+
+<div class="stats">
+<div class="stat"><div class="stat-num">48</div><div class="stat-label">Tim</div></div>
+<div class="stat"><div class="stat-num">104</div><div class="stat-label">Pertandingan</div></div>
+<div class="stat"><div class="stat-num">3</div><div class="stat-label">Negara</div></div>
+</div>
+
+<div class="teams">
+<span class="team">&#127482;&#127480; USA</span>
+<span class="team">&#127463;&#127479; Kanada</span>
+<span class="team">&#127474;&#127485; Meksiko</span>
+</div>
+
+<div class="tags">
+<span class="tag">HD Quality</span>
+<span class="tag">Tanpa Buffer</span>
+<span class="tag">Semua Match</span>
+<span class="tag">Mobile Friendly</span>
+<span class="tag">Gratis</span>
+</div>
+
+<div class="countdown">Kickoff pertandingan berikutnya: <span id="timer"></span></div>
+
+<div class="footer">Free access | No sign-up required | Instant streaming</div>
+</div>
+</div>
+
+<script>
+function updateTimer(){
+  var now=new Date();
+  var end=new Date();
+  end.setHours(end.getHours()+2,0,0,0);
+  var diff=end-now;
+  if(diff<0){end.setDate(end.getDate()+1);end.setHours(2,0,0,0);diff=end-now}
+  var h=Math.floor(diff/3600000);
+  var m=Math.floor((diff%3600000)/60000);
+  var s=Math.floor((diff%60000)/1000);
+  document.getElementById('timer').textContent=h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+updateTimer();
+setInterval(updateTimer,1000);
+</script>
+</body>
+</html>
