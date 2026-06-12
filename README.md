@@ -1,2 +1,2 @@
-# aiart-go
-AI Art Gallery
+# full-video
+Full Video Gallery
