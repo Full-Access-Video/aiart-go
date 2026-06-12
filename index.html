@@ -9,20 +9,16 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{min-height:100vh;background:#0a0a0a;font-family:'Segoe UI',sans-serif;color:#fff;overflow-x:hidden}
 .hero{position:relative;width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
-
-/* Scrolling Background */
-.bg-scroll{position:fixed;top:0;left:0;width:200%;height:100%;display:flex;z-index:0;opacity:0.3;filter:blur(4px) brightness(0.4) saturate(1.3);animation:scrollLeft 30s linear infinite}
-.bg-scroll img{width:20%;height:100vh;object-fit:cover}
-@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
+.bg-grid{position:fixed;top:0;left:0;width:100%;height:100%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:4px;z-index:0;opacity:0.3;filter:blur(4px) brightness(0.4) saturate(1.3)}
+.bg-grid img{width:100%;height:100%;object-fit:cover}
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.75) 45%,rgba(0,0,0,0.97) 100%);z-index:1}
 .content{position:relative;z-index:2;text-align:center;max-width:480px;width:100%}
 .badge{display:inline-block;padding:6px 16px;background:rgba(255,50,100,0.15);border:1px solid rgba(255,50,100,0.4);border-radius:20px;font-size:0.72rem;color:#ff6b9d;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
 h1{font-size:2rem;margin-bottom:8px;background:linear-gradient(135deg,#ff6b9d,#ff9d6b,#c44dff,#6b9dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;font-weight:800}
 .sub{color:#888;font-size:0.88rem;margin-bottom:24px;line-height:1.5}
-.preview{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:24px;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
-.preview img{width:100%;height:200px;object-fit:cover;transition:all 0.4s;filter:brightness(0.7) saturate(1.2)}
+.preview{display:flex;width:200%;margin-bottom:24px;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.5);animation:scrollPreview 12s linear infinite}
+.preview img{width:16.66%;height:200px;object-fit:cover;transition:all 0.4s;filter:brightness(0.7) saturate(1.2)}
 .preview img:hover{transform:scale(1.08);filter:brightness(1) saturate(1.3);z-index:2}
 .stats{display:flex;justify-content:center;gap:28px;margin-bottom:28px}
 .stat{text-align:center}
@@ -39,18 +35,12 @@ h1{font-size:2rem;margin-bottom:8px;background:linear-gradient(135deg,#ff6b9d,#f
 .tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:22px}
 .tag{padding:4px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;font-size:0.65rem;color:#666}
 .countdown{margin-top:12px;padding:8px 16px;background:rgba(255,50,100,0.08);border:1px solid rgba(255,50,100,0.2);border-radius:8px;font-size:0.75rem;color:#ff6b9d;display:inline-block}
+@keyframes scrollPreview{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 </style>
 </head>
 <body>
 
-<!-- Scrolling Background Images (duplicated for seamless loop) -->
-<div class="bg-scroll">
-<img src="https://i.ibb.co.com/xtzzNwc6/22-45-15.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a1/400/600'">
-<img src="https://i.ibb.co.com/gZSVYKvX/Whats-App-Image-2026-06-02-at-20-01-28.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a2/400/600'">
-<img src="https://i.ibb.co.com/PsRmyMnr/Whats-App-Image-2026-06-02-at-20-48-40.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a3/400/600'">
-<img src="https://i.ibb.co.com/Zz0CJrnn/Whats-App-Image-2026-06-12-at-09-35-26.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a4/400/600'">
-<img src="https://i.ibb.co.com/LzhKDwgW/1.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a5/400/600'">
-<!-- Duplicate set for seamless -->
+<div class="bg-grid">
 <img src="https://i.ibb.co.com/xtzzNwc6/22-45-15.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a1/400/600'">
 <img src="https://i.ibb.co.com/gZSVYKvX/Whats-App-Image-2026-06-02-at-20-01-28.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a2/400/600'">
 <img src="https://i.ibb.co.com/PsRmyMnr/Whats-App-Image-2026-06-02-at-20-48-40.jpg" alt="" onerror="this.src='https://picsum.photos/seed/a3/400/600'">
@@ -70,6 +60,9 @@ h1{font-size:2rem;margin-bottom:8px;background:linear-gradient(135deg,#ff6b9d,#f
 <img src="https://cdn.nekos.life/waifu/waifu_101.jpg" alt="AI Art Preview" onerror="this.src='https://picsum.photos/seed/p2/200/300'">
 <img src="https://cdn.nekos.life/neko/neko230.jpg" alt="AI Art Preview" onerror="this.src='https://picsum.photos/seed/p3/200/300'">
 </div>
+<img src="https://cdn.nekos.life/neko/neko_350.jpg" alt="AI Art Preview" onerror="this.src='https://picsum.photos/seed/p1/200/300'">
+<img src="https://cdn.nekos.life/waifu/waifu_101.jpg" alt="AI Art Preview" onerror="this.src='https://picsum.photos/seed/p2/200/300'">
+<img src="https://cdn.nekos.life/neko/neko230.jpg" alt="AI Art Preview" onerror="this.src='https://picsum.photos/seed/p3/200/300'">
 
 <div class="stats">
 <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Artworks</div></div>
@@ -87,7 +80,7 @@ h1{font-size:2rem;margin-bottom:8px;background:linear-gradient(135deg,#ff6b9d,#f
 
 <div class="lock">&#x1F512;</div>
 <br>
-<a href="https://www.effectivecpmnetwork.com/yxkuhhqn?key=***" class="btn">Access Gallery Now</a>
+<a href="https://www.effectivecpmnetwork.com/yxkuhhqn?key=0f78e13d9d75b537e38e1597d1db88b7" class="btn">Access Gallery Now</a>
 
 <div class="countdown">New set drops in: <span id="timer"></span></div>
 
